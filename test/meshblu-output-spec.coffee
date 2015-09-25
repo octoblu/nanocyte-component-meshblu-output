@@ -10,5 +10,33 @@ describe 'MeshbluOutput', ->
 
   describe '->onEnvelope', ->
     describe 'when called with an envelope', ->
+      beforeEach ->
+        @result = @sut.onEnvelope
+          message:
+            some: 'data'
+          config:
+            uuid: 'device-uuid'
+            topic: 'flow'
+
       it 'should return the message', ->
-        expect(@sut.onEnvelope({message: 'anything'})).to.deep.equal 'anything'
+        expect(@result).to.deep.equal
+          devices: ['device-uuid']
+          topic: 'flow'
+          payload:
+            some: 'data'
+
+    describe 'when called with a much cooler envelope', ->
+      beforeEach ->
+        @result = @sut.onEnvelope
+          message:
+            party: 'at my house!'
+          config:
+            uuid: 'the-device-uuid'
+            topic: 'watch-my-flow'
+
+      it 'should return the message', ->
+        expect(@result).to.deep.equal
+          devices: ['the-device-uuid']
+          topic: 'watch-my-flow'
+          payload:
+            party: 'at my house!'
