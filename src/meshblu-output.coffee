@@ -4,8 +4,8 @@ ReturnValue = require 'nanocyte-component-return-value'
 class MeshbluOutput extends ReturnValue
   onEnvelope: (envelope) =>
     {config,message} = envelope
-    {uuid} = config
+    {uuid,topic} = config
 
-    _.defaults devices: [uuid], message
+    _.defaults devices: [uuid], message, topic: topic
 
 module.exports = MeshbluOutput

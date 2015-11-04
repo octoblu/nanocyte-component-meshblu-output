@@ -13,7 +13,8 @@ describe 'MeshbluOutput', ->
       beforeEach ->
         @result = @sut.onEnvelope
           message:
-            some: 'data'
+            payload:
+              some: 'data'
           config:
             uuid: 'device-uuid'
             topic: 'flow'
@@ -38,5 +39,4 @@ describe 'MeshbluOutput', ->
         expect(@result).to.deep.equal
           devices: ['the-device-uuid']
           topic: 'watch-my-flow'
-          payload:
-            party: 'at my house!'
+          party: 'at my house!'
