@@ -12,11 +12,11 @@ describe 'MeshbluOutput', ->
     describe 'when called with an envelope', ->
       beforeEach ->
         @result = @sut.onEnvelope
-          message:
-            some: 'data'
           config:
             uuid: 'device-uuid'
             topic: 'flow'
+            payload:
+              some: 'data'
 
       it 'should return the message', ->
         expect(@result).to.deep.equal
@@ -28,11 +28,11 @@ describe 'MeshbluOutput', ->
     describe 'when called with a much cooler envelope', ->
       beforeEach ->
         @result = @sut.onEnvelope
-          message:
-            party: 'at my house!'
           config:
             uuid: 'the-device-uuid'
             topic: 'watch-my-flow'
+            payload:
+              party: 'at my house!'
 
       it 'should return the message', ->
         expect(@result).to.deep.equal
